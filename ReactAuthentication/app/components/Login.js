@@ -10,6 +10,7 @@ import {
   Text,
   View,
   TextInput,
+  ImageBackground,
   KeyboardAvoidingView,
   TouchableOpacity,
   AsyncStorage,
@@ -43,10 +44,17 @@ export default class Login extends Component<{}> {
 
   render() {
     return (
+
+         
+
+
+
       <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
+        <ImageBackground source={require('../img/bg.jpg')} style={styles.backgroundImage}>
 
         <View style={styles.container}>
-       
+
+
           <Text style={styles.header}> LOGIN </Text>
 
           <TextInput
@@ -56,7 +64,7 @@ export default class Login extends Component<{}> {
             />
 
             <TextInput
-            style={styles.textInput} placeholder='pss'
+            style={styles.textInput} placeholder='Pasword'
             onChangeText={ (password) => this.setState({password}) }
             underlineColorios='transparent'
             />
@@ -67,9 +75,15 @@ export default class Login extends Component<{}> {
              <Text>Login</Text>
             </TouchableOpacity>
 
+
+
+
           </View>
 
+</ImageBackground>
+
        </KeyboardAvoidingView>
+
 
     );
 
@@ -93,10 +107,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#A2D4DE',
     paddingLeft: 40,
     paddingRight: 40,
   },
+
 
   
    header: {
@@ -119,7 +133,16 @@ const styles = StyleSheet.create({
       borderColor: '#121313',
       borderRadius: 20,
       borderWidth: 1,
+    },
+    backgroundImage: {
+      width: '100%',
+
+      height: '100%',
+
+      justifyContent: 'center',
     }
+
+    
 });
 
 
