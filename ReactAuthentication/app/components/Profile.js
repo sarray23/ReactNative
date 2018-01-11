@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 // this import is responsible for the navigation between various screens of muy app
 import { StackNavigator } from 'react-navigation';
+import Header_Home from './Header_Home';
 
 
 export default class Profile extends Component<{}> {
@@ -37,13 +38,15 @@ export default class Profile extends Component<{}> {
      }
   }
 
-  //get my username from login screen
+  //get my username from login screen and display it 
 
   render() {
     return (
           <View style={styles.container}>
+          <Header_Home/>
+          <View style={styles.textContent}>
              <Text>Welcome {this.state.username} to your Home page</Text>
-
+</View>
           </View>
     );
 
@@ -57,9 +60,18 @@ const styles = StyleSheet.create({
   
  container: {
     flex: 1,
+   
+    backgroundColor: '#E8DAF0',
+ },
+
+ textContent: {
+
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E8DAF0',
+    paddingLeft: 40,
+    paddingRight: 40,
+
  }
  
     
