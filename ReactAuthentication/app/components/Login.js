@@ -95,7 +95,32 @@ export default class Login extends Component<{}> {
 
   login = () => {
 
-    alert('test');
+      fetch('http://localhost:3000/users', {
+         method: 'POST',
+         headers: {
+             'Accept': 'application/json',
+             'Content-Type': 'application/json',
+           },
+          body: JSON.stringify({
+             username: this.state.username,
+             password: this.state.password,
+          })
+      })
+
+      .then((response) => response.json())
+      .then ((res) => {
+
+           alert(res.message);
+
+         if(res.success === true){
+            AsyncStorage.setItem('user', res.user);
+            this.props.navigation.navigate('Profile');
+         }
+         else {
+          alert(res.message);
+         }
+      })
+      .done();
   }
 
 }
