@@ -19,10 +19,28 @@ import { StackNavigator } from 'react-navigation';
 
 export default class Profile extends Component<{}> {
 
+
+    state = {
+     username: [],
+  }
+  
+  componentDidMount() {
+    this._loadInitialState().done();
+  }
+
+  _loadInitialState = async () => {
+
+     var value = await AsyncStorage.getItem('username');
+     if (value !== null) {  
+       this.setState({username: value});
+
+     }
+  }
+
   render() {
     return (
           <View style={styles.container}>
-          <Text style={styles.header}>-Welcome to the home page-</Text>
+             <Text>Welcome {this.state.username} to your Home page</Text>
 
           </View>
     );
@@ -39,11 +57,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#6F4289',
- },
-  text: {
-     color: '#fff',
-  }
+    backgroundColor: '#E8DAF0',
+ }
+ 
     
 });
 

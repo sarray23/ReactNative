@@ -29,6 +29,12 @@ export default class Login extends Component<{}> {
        password: '',
      }
   }
+
+
+
+
+
+
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
   componentDidMount() {
@@ -60,6 +66,7 @@ export default class Login extends Component<{}> {
 
           <TextInput
             style={styles.textInput} placeholder='Username'
+            value={this.state.username}
             onChangeText={ (username) => this.setState({username}) }
             underlineColorios='transparent'
             />
@@ -69,6 +76,8 @@ export default class Login extends Component<{}> {
 
             <TextInput
             style={styles.textInput} placeholder='Pasword'
+           value={this.state.password}
+
             onChangeText={ (password) => this.setState({password}) }
              secureTextEntry={true} underlineColorios='transparent'
             />
@@ -94,9 +103,17 @@ export default class Login extends Component<{}> {
 
   }
 
+
+
+
+
+
+
   login = () => {
 
-      fetch('http://localhost:3000/users', {
+    
+
+      fetch('http://192.168.1.15:3000/users', {
          method: 'POST',
          headers: {
              'Accept': 'application/json',
@@ -111,15 +128,30 @@ export default class Login extends Component<{}> {
       .then((response) => response.json())
       .then ((res) => {
 
-
+// if my response is true 
            if(res.success === true){
+            var username = res.message;
+
+            AsyncStorage.setItem('username', res.user);
+
+
+
             AsyncStorage.setItem('user', res.user);
             this.props.navigation.navigate('Profile');
          }
 
-         else {
+         else if(res.failure === true){
             alert(res.message);
          }
+
+         else if (this.state.username == '' || this.state.password == ''){
+
+       alert ('empty fields');
+
+    }
+
+
+
       })
 
       .done();
