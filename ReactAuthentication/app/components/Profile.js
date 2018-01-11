@@ -37,6 +37,8 @@ export default class Profile extends Component<{}> {
      }
   }
 
+  //get my username from login screen
+
   render() {
     return (
           <View style={styles.container}>

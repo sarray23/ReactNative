@@ -41,6 +41,7 @@ export default class Login extends Component<{}> {
     this._loadInitialState().done();
   }
 
+//Redirection to profile page directly if user connected
   _loadInitialState = async () => {
 
      var value = await AsyncStorage.getItem('user');
@@ -52,9 +53,7 @@ export default class Login extends Component<{}> {
   render() {
     return (
 
-         
-
-
+      
 
       <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
         <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
