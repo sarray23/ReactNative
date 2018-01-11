@@ -69,7 +69,7 @@ export default class Login extends Component<{}> {
             <TextInput
             style={styles.textInput} placeholder='Pasword'
             onChangeText={ (password) => this.setState({password}) }
-            underlineColorios='transparent'
+             secureTextEntry={true} underlineColorios='transparent'
             />
             
 
