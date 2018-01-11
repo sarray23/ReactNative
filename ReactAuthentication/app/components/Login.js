@@ -50,12 +50,12 @@ export default class Login extends Component<{}> {
 
 
       <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-        <ImageBackground source={require('../img/bg.jpg')} style={styles.backgroundImage}>
+        <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
 
         <View style={styles.container}>
 
 
-          <Text style={styles.header}> LOGIN </Text>
+          <Text style={styles.header}>-LOGIN-</Text>
 
           <TextInput
             style={styles.textInput} placeholder='Username'
@@ -63,11 +63,15 @@ export default class Login extends Component<{}> {
             underlineColorios='transparent'
             />
 
+     
+
+
             <TextInput
             style={styles.textInput} placeholder='Pasword'
             onChangeText={ (password) => this.setState({password}) }
             underlineColorios='transparent'
             />
+            
 
             <TouchableOpacity
              style={styles.btn}
@@ -127,12 +131,12 @@ const styles = StyleSheet.create({
     },
     btn: {
       alignSelf: 'stretch',
-      backgroundColor: '#95DDAE',
+      backgroundColor: '#80BCD4',
       padding: 20,
       alignItems: 'center',
-      borderColor: '#121313',
+      borderColor: '#9C78B1',
       borderRadius: 20,
-      borderWidth: 1,
+      borderWidth: 2,
     },
     backgroundImage: {
       width: '100%',
@@ -140,7 +144,9 @@ const styles = StyleSheet.create({
       height: '100%',
 
       justifyContent: 'center',
-    }
+    },
+
+ 
 
     
 });
