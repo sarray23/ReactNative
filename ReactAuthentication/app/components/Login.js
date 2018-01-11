@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -110,16 +111,17 @@ export default class Login extends Component<{}> {
       .then((response) => response.json())
       .then ((res) => {
 
-           alert(res.message);
 
-         if(res.success === true){
+           if(res.success === true){
             AsyncStorage.setItem('user', res.user);
             this.props.navigation.navigate('Profile');
          }
+
          else {
-          alert(res.message);
+            alert(res.message);
          }
       })
+
       .done();
   }
 
