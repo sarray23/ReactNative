@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 
 import {
   StyleSheet,
+
   Text,
   Picker,
   View,
@@ -42,7 +43,7 @@ export default class Login extends Component<{}> {
 
 
 
-
+/*
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
   componentDidMount() {
@@ -56,7 +57,7 @@ export default class Login extends Component<{}> {
      if (value !== null){
        this.props.navigation.navigate('Profile');
      }
-  }
+  }*/
 
   render() {
     return (

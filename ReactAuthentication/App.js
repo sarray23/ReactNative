@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
+  NetInfo,
   Text,
   View
 } from 'react-native';
@@ -15,6 +16,7 @@ import {
 import { StackNavigator } from 'react-navigation';
 import Login from './app/components/Login';
 import Profile from './app/components/Profile';
+
 
 
 const Application = StackNavigator({
@@ -27,8 +29,27 @@ const Application = StackNavigator({
         }
   });
 
-
+ 
 export default class App extends Component<{}> {
+
+
+  componentDidMount() {
+    NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
+
+    NetInfo.isConnected.fetch().done(
+      (isConnected) => { this.setState({ status: isConnected }); }
+    );
+}
+
+componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange);
+}
+
+handleConnectionChange = (isConnected) => {
+        this.setState({ status: isConnected });
+        console.log(`is connected: ${this.state.status}`);
+}
+
   render() {
     return (
 

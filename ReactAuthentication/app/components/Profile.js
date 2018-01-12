@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  NetInfo,
   View,
   TextInput,
   ImageBackground,
@@ -33,21 +32,7 @@ export default class Profile extends Component<{}> {
   
   componentDidMount() {
     this._loadInitialState().done();
-
-     NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
-
-    NetInfo.isConnected.fetch().done(
-      (isConnected) => { this.setState({ status: isConnected }); }
-    );
   }
-  componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange);
-}
-
-handleConnectionChange = (isConnected) => {
-        this.setState({ status: isConnected });
-        console.log(`is connected: ${this.state.status}`);
-}
 
   _loadInitialState = async () => {
 
@@ -62,7 +47,6 @@ handleConnectionChange = (isConnected) => {
      }
   }
 
-
   //get my username from login screen and display it 
 
   render() {
@@ -70,7 +54,7 @@ handleConnectionChange = (isConnected) => {
           <View style={styles.container}>
           <Header_Home/>
           <View style={styles.textContent}>
-             <Text>Welcome {this.state.username} to your Home page</Text>
+             <Text>Welcome {this.state.username}to your Home page</Text>
            </View>
 
           </View>
