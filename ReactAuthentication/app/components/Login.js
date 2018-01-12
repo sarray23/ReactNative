@@ -32,6 +32,9 @@ export default class Login extends Component<{}> {
      this.state = {
        username: '',
        password: '',
+              division: '',
+
+
   
 
      }
@@ -41,7 +44,7 @@ export default class Login extends Component<{}> {
 
 
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
-/*
+
   componentDidMount() {
     this._loadInitialState().done();
   }
@@ -53,7 +56,7 @@ export default class Login extends Component<{}> {
      if (value !== null){
        this.props.navigation.navigate('Profile');
      }
-  }*/
+  }
 
   render() {
     return (
@@ -86,22 +89,20 @@ export default class Login extends Component<{}> {
             onChangeText={ (password) => this.setState({password}) }
              secureTextEntry={true} underlineColorios='transparent'
             />
-             <Picker 
-            style={{
-            width: 200,
-            }}
-            selectedValue={(this.state && this.state.pickerValue) || 'a'}
-            onValueChange={(value) => {
-            this.setState({pickerValue: value});
-            }} itemStyle={{color: 'white'}}>
-            <Picker.Item label={'Division'} value={'a'} />
-           <Picker.Item label={'Division'} value={'b'} />
-           <Picker.Item label={'Division'} value={'c'} />
 
-          </Picker>
- 
+            <TextInput
+            style={styles.textInput} placeholder='Division'
+           value={this.state.division}
+            ref="division"
+            onChangeText={ (division) => this.setState({division}) }
+             underlineColorios='transparent'
+            />
 
 
+    
+
+
+         
             <TouchableOpacity
              style={styles.btn}
              onPress={this.login}>
@@ -128,8 +129,8 @@ export default class Login extends Component<{}> {
 
 
 
-
   login = () => {
+
 
       fetch('http://192.168.1.15:3000/users', {
          method: 'POST',
@@ -140,6 +141,8 @@ export default class Login extends Component<{}> {
           body: JSON.stringify({
              username: this.state.username,
              password: this.state.password,
+             division: this.state.division,
+
           })
       })
 
@@ -147,19 +150,32 @@ export default class Login extends Component<{}> {
       .then ((res) => {
 
 // if my response is true 
-           if(res.success === true){
-            var username = res.message;
 
-           AsyncStorage.setItem('username', res.user);
+           if(res.success === true){
+
+           // var username = res.message;
+           // var division = res.message;
+
+
+
+
+       //    AsyncStorage.setItem('username', res.user);
+
+        // AsyncStorage.setItem('division', res.user);
+
+
+
 
 
 
             AsyncStorage.setItem('user', res.user);
+
             this.props.navigation.navigate('Profile');
          }
 
          else {
             alert(res.message);
+           // alert(this.state.language);
          }
 
          
@@ -215,6 +231,12 @@ const styles = StyleSheet.create({
       height: '100%',
 
       justifyContent: 'center',
+    },
+
+    picker: {
+
+     width: 200,
+
     }
 
  

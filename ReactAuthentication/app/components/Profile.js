@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
+  NetInfo,
   View,
   TextInput,
   ImageBackground,
@@ -16,6 +17,8 @@ import {
 // this import is responsible for the navigation between various screens of muy app
 import { StackNavigator } from 'react-navigation';
 import Header_Home from './Header_Home';
+import Login from './Login';
+
 
 
 export default class Profile extends Component<{}> {
@@ -23,20 +26,42 @@ export default class Profile extends Component<{}> {
 
     state = {
      username: [],
+
+
+
   }
   
   componentDidMount() {
     this._loadInitialState().done();
+
+     NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
+
+    NetInfo.isConnected.fetch().done(
+      (isConnected) => { this.setState({ status: isConnected }); }
+    );
   }
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange);
+}
+
+handleConnectionChange = (isConnected) => {
+        this.setState({ status: isConnected });
+        console.log(`is connected: ${this.state.status}`);
+}
 
   _loadInitialState = async () => {
 
      var value = await AsyncStorage.getItem('username');
-     if (value !== null) {  
+
+
+     if (value !== null){  
        this.setState({username: value});
+
+
 
      }
   }
+
 
   //get my username from login screen and display it 
 
@@ -46,11 +71,15 @@ export default class Profile extends Component<{}> {
           <Header_Home/>
           <View style={styles.textContent}>
              <Text>Welcome {this.state.username} to your Home page</Text>
-</View>
+           </View>
+
           </View>
     );
 
   }
+
+
+
 
 
 }
