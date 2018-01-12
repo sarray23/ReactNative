@@ -34,11 +34,9 @@ export default class App extends Component<{}> {
 
 
   componentDidMount() {
-    NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
-
-    NetInfo.isConnected.fetch().done(
-      (isConnected) => { this.setState({ status: isConnected }); }
-    );
+    NetInfo.isConnected.fetch().then(isConnected => {
+  console.log('First, is ' + (isConnected ? 'online' : 'offline'));
+});
 }
 
 componentWillUnmount() {

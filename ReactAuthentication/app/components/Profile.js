@@ -53,11 +53,11 @@ export default class Profile extends Component<{}> {
   render() {
     return (
        <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-        <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
+        <ImageBackground source={require('../img/bg.jpg')} style={styles.backgroundImage}>
           <View style={styles.container}>
           <Header_Home/>
           <View style={styles.textContent}>
-             <Text>Welcome {this.state.username}to your Home page</Text>
+             <Text>Welcome {this.state.username} to your Home page</Text>
            </View>
 
           </View>

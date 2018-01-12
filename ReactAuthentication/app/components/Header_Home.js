@@ -43,11 +43,21 @@ export default class Header_Home extends Component<{}> {
 const styles = StyleSheet.create({
   
  header: {
+
+    fontSize: 40,
+     fontStyle: 'italic',
+     color: '#fff',
+     textShadowColor: '#252525',
+     textShadowOffset: {width: 2, height: 2},
+     textShadowRadius: 15,
+     fontWeight: 'bold',
     
-    height:60,
-    marginTop: 10,
+
+    height:70,
     backgroundColor:'#fff',
     flexDirection: 'row',
+          backgroundColor:'rgba(255,255,255,0.8)',
+
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
@@ -61,7 +71,7 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    marginTop: 12,
+    marginTop: 24,
      fontWeight: 'bold',
       fontSize: 19,
 
