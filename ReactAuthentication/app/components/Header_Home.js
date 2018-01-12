@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   
  header: {
     
-    height:75,
+    height:60,
     marginTop: 10,
     backgroundColor:'#fff',
     flexDirection: 'row',
@@ -61,8 +61,9 @@ const styles = StyleSheet.create({
 
   },
   title: {
+    marginTop: 12,
      fontWeight: 'bold',
-      fontSize: 21,
+      fontSize: 19,
 
 
   }

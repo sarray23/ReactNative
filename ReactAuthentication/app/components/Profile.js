@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
+  KeyboardAvoidingView,
   View,
   TextInput,
   ImageBackground,
@@ -51,6 +52,8 @@ export default class Profile extends Component<{}> {
 
   render() {
     return (
+       <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
+        <ImageBackground source={require('../img/background.jpg')} style={styles.backgroundImage}>
           <View style={styles.container}>
           <Header_Home/>
           <View style={styles.textContent}>
@@ -58,6 +61,9 @@ export default class Profile extends Component<{}> {
            </View>
 
           </View>
+          </ImageBackground>
+
+       </KeyboardAvoidingView>
     );
 
   }
@@ -74,8 +80,17 @@ const styles = StyleSheet.create({
  container: {
     flex: 1,
    
-    backgroundColor: '#E8DAF0',
  },
+  wrapper: {
+     flex: 1,
+  },
+  backgroundImage: {
+      width: '100%',
+
+      height: '100%',
+
+      justifyContent: 'center',
+    },
 
  textContent: {
 
