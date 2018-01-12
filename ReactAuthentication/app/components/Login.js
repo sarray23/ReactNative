@@ -9,13 +9,18 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
+  Picker,
   View,
   TextInput,
   ImageBackground,
   KeyboardAvoidingView,
   TouchableOpacity,
   AsyncStorage,
+  Item
 } from 'react-native';
+
+import ValidationComponent from 'react-native-form-validator';
+
 // this import is responsible for the navigation between various screens of muy app
 import { StackNavigator } from 'react-native-navigation';
 
@@ -27,16 +32,16 @@ export default class Login extends Component<{}> {
      this.state = {
        username: '',
        password: '',
+  
+
      }
   }
 
 
 
 
-
-
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
-
+/*
   componentDidMount() {
     this._loadInitialState().done();
   }
@@ -48,7 +53,7 @@ export default class Login extends Component<{}> {
      if (value !== null){
        this.props.navigation.navigate('Profile');
      }
-  }
+  }*/
 
   render() {
     return (
@@ -66,6 +71,7 @@ export default class Login extends Component<{}> {
           <TextInput
             style={styles.textInput} placeholder='Username'
             value={this.state.username}
+            ref="username"
             onChangeText={ (username) => this.setState({username}) }
             underlineColorios='transparent'
             />
@@ -76,17 +82,32 @@ export default class Login extends Component<{}> {
             <TextInput
             style={styles.textInput} placeholder='Pasword'
            value={this.state.password}
-
+            ref="password"
             onChangeText={ (password) => this.setState({password}) }
              secureTextEntry={true} underlineColorios='transparent'
             />
-            
+             <Picker 
+            style={{
+            width: 200,
+            }}
+            selectedValue={(this.state && this.state.pickerValue) || 'a'}
+            onValueChange={(value) => {
+            this.setState({pickerValue: value});
+            }} itemStyle={{color: 'white'}}>
+            <Picker.Item label={'Division'} value={'a'} />
+           <Picker.Item label={'Division'} value={'b'} />
+           <Picker.Item label={'Division'} value={'c'} />
+
+          </Picker>
+ 
+
 
             <TouchableOpacity
              style={styles.btn}
              onPress={this.login}>
              <Text>Login</Text>
             </TouchableOpacity>
+
 
 
 
@@ -110,8 +131,6 @@ export default class Login extends Component<{}> {
 
   login = () => {
 
-    
-
       fetch('http://192.168.1.15:3000/users', {
          method: 'POST',
          headers: {
@@ -131,7 +150,7 @@ export default class Login extends Component<{}> {
            if(res.success === true){
             var username = res.message;
 
-            AsyncStorage.setItem('username', res.user);
+           AsyncStorage.setItem('username', res.user);
 
 
 
@@ -139,17 +158,11 @@ export default class Login extends Component<{}> {
             this.props.navigation.navigate('Profile');
          }
 
-         else if(res.failure === true){
+         else {
             alert(res.message);
          }
 
-         else if (this.state.username == '' || this.state.password == ''){
-
-       alert ('empty fields');
-
-    }
-
-
+         
 
       })
 
@@ -202,7 +215,7 @@ const styles = StyleSheet.create({
       height: '100%',
 
       justifyContent: 'center',
-    },
+    }
 
  
 

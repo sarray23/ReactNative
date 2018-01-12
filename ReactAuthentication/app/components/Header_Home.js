@@ -21,11 +21,11 @@ export default class Header_Home extends Component<{}> {
 
   render() {
     return (
-      
+
           <View style={styles.header}>
 
                 
-                 <Text>Home Page</Text>
+                 <Text style={styles.title}>Home Page</Text>
                      
 
 
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
   
  header: {
     
-    height: 80,
-    marginTop: 20,
+    height:75,
+    marginTop: 10,
     backgroundColor:'#fff',
     flexDirection: 'row',
     alignItems: 'center',
@@ -57,6 +57,12 @@ const styles = StyleSheet.create({
   icone: {
    width: 40,
    height: 40,
+
+
+  },
+  title: {
+     fontWeight: 'bold',
+      fontSize: 21,
 
 
   }
