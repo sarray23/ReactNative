@@ -42,7 +42,7 @@ export default class Login extends Component<{}> {
   }
 
 
-
+/*
 
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
@@ -57,7 +57,7 @@ export default class Login extends Component<{}> {
      if (value !== null){
        this.props.navigation.navigate('Profile');
      }
-  }
+  }*/
 
   render() {
     return (
@@ -65,7 +65,7 @@ export default class Login extends Component<{}> {
       
 
       <KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-        <ImageBackground source={require('../img/bg.jpg')} style={styles.backgroundImage}>
+        <ImageBackground source={require('../img/bckground.jpg')} style={styles.backgroundImage}>
 
         <View style={styles.container}>
 
