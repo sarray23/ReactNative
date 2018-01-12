@@ -42,7 +42,7 @@ export default class Login extends Component<{}> {
   }
 
 
-
+/*
 
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
@@ -57,7 +57,7 @@ export default class Login extends Component<{}> {
      if (value !== null){
        this.props.navigation.navigate('Profile');
      }
-  }
+  }*/
 
   render() {
     return (
@@ -71,6 +71,7 @@ export default class Login extends Component<{}> {
 
 
           <Text style={styles.header}>-LOGIN-</Text>
+        <View style={styles.inputcontainer}>
 
           <TextInput
             style={styles.textInput} placeholder='Username'
@@ -103,7 +104,7 @@ export default class Login extends Component<{}> {
     
 
 
-         
+         </View>
             <TouchableOpacity
              style={styles.btn}
              onPress={this.login}>
@@ -199,33 +200,49 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: 40,
-    paddingRight: 40,
+
   },
 
 
   
    header: {
-     fontSize: 24,
-     marginBottom: 60,
+     fontSize: 40,
+     marginBottom: 28,
+     fontStyle: 'italic',
      color: '#fff',
+     textShadowColor: '#252525',
+     textShadowOffset: {width: 2, height: 2},
+     textShadowRadius: 15,
      fontWeight: 'bold',
    },
-   textInput: {
-     alignSelf: 'stretch',
-     padding: 16,
-     marginBottom: 20,
-     backgroundColor: '#fff',
+      textInput: {
+    margin:8,
+     alignSelf: 'stretch',    
+       backgroundColor: '#fff',
+      backgroundColor:'rgba(255,255,255,1)',
+
+     height: 48,
+      fontSize: 16,
+padding:18,
     },
+
+
+
     btn: {
       alignSelf: 'stretch',
+
       backgroundColor: '#80BCD4',
-      padding: 20,
+      margin: 28,
+      padding: 28,
+      backgroundColor: '#fff',
       alignItems: 'center',
-      borderColor: '#9C78B1',
-      borderRadius: 20,
-      borderWidth: 2,
+      borderColor: '#fff',
+      backgroundColor:'rgba(255,255,255,0.6)',
+      borderWidth: 1,
+     
     },
+
+
     backgroundImage: {
       width: '100%',
 
@@ -234,11 +251,22 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
 
-    picker: {
 
-     width: 200,
+    inputcontainer: {
+      backgroundColor:'rgba(255,255,255,0.2)',
 
-    }
+
+      margin: 20,
+      marginBottom: 0,
+      padding: 20,
+      paddingBottom: 10,
+      alignSelf: 'stretch',
+      borderWidth: 1,
+      borderColor:'#fff',
+    },
+
+  
+  
 
  
 
