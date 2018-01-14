@@ -22,7 +22,7 @@ import {
 
 import ValidationComponent from 'react-native-form-validator';
 
-// this import is responsible for the navigation between various screens of muy app
+// this import is responsible for the navigation between various screens of my app
 import { StackNavigator } from 'react-native-navigation';
 
 
@@ -40,7 +40,8 @@ export default class Login extends Component<{}> {
 
 
 
-//This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
+/*This method will check either my user is already connected or not, in case yes,
+ the user would be redirected directly to his home page*/
 
   componentDidMount() {
     this._loadInitialState().done();
