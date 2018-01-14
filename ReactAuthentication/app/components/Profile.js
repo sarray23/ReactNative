@@ -100,9 +100,9 @@ export default class Profile extends Component<{}> {
 
      },
      txt: {
-
+     fontSize: 20,
       color:'#fff',
-      fontSize: 20,
+     
       fontWeight: 'bold',
      }
  

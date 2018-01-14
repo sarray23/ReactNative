@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
      fontWeight: 'bold',
       fontSize: 19,
+      
 
 
   }
