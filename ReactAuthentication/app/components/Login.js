@@ -43,7 +43,7 @@ export default class Login extends Component<{}> {
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
   componentDidMount() {
-    //this._loadInitialState().done();
+    this._loadInitialState().done();
 
     //Check my network connection
 
@@ -72,7 +72,7 @@ _handleConnectivityChange = (isConnected) => {
     isConnected,
   });
 };
-/*
+
 
 //Redirection to profile page directly if user connected
   _loadInitialState = async () => {
@@ -81,7 +81,7 @@ _handleConnectivityChange = (isConnected) => {
      if (value !== null){
        this.props.navigation.navigate('Profile');
      }
-  }*/
+  }
 
   render() {
     return (
