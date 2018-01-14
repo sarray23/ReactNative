@@ -55,7 +55,8 @@ export default class Profile extends Component<{}> {
           <View style={styles.container}>
           <Header_Home/>
           <View style={styles.textContent}>
-             <Text>Welcome {this.state.username} From {this.state.division} To Your Home Page</Text>
+             <Text style={styles.txt}>Welcome {this.state.username} From {this.state.division} To 
+             Your Home Page</Text>
            </View>
 
           </View>
@@ -97,6 +98,12 @@ export default class Profile extends Component<{}> {
      paddingLeft: 40,
      paddingRight: 40,
 
+     },
+     txt: {
+
+      color:'#fff',
+      fontSize: 20,
+      fontWeight: 'bold',
      }
  
     

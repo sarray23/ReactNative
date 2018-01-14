@@ -36,7 +36,7 @@ export default class Login extends Component<{}> {
      }
   }
 
-/*
+
 
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
@@ -52,7 +52,7 @@ export default class Login extends Component<{}> {
        this.props.navigation.navigate('Profile');
      }
   }
-*/
+
   render() {
     return (
 
@@ -202,14 +202,14 @@ const styles = StyleSheet.create({
      fontWeight: 'bold',
    },
       textInput: {
-    margin:8,
-     alignSelf: 'stretch',    
+      margin:8,
+       alignSelf: 'stretch',    
        backgroundColor: '#fff',
-      backgroundColor:'rgba(255,255,255,1)',
+       backgroundColor:'rgba(255,255,255,1)',
 
-     height: 48,
+       height: 48,
       fontSize: 16,
-padding:18,
+      padding:18,
     },
 
 
