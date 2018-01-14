@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 
 import {
   StyleSheet,
-
   Text,
   Picker,
   View,
@@ -33,11 +32,7 @@ export default class Login extends Component<{}> {
      this.state = {
        username: '',
        password: '',
-              division: '',
-
-
-  
-
+       division: '',
      }
   }
 
@@ -70,9 +65,9 @@ export default class Login extends Component<{}> {
 
 
           <Text style={styles.header}>-LOGIN-</Text>
-        <View style={styles.inputcontainer}>
+            <View style={styles.inputcontainer}>
 
-          <TextInput
+             <TextInput
             style={styles.textInput} placeholder='Username'
             value={this.state.username}
             ref="username"
@@ -91,6 +86,7 @@ export default class Login extends Component<{}> {
              secureTextEntry={true} underlineColorios='transparent'
             />
 
+
             <TextInput
             style={styles.textInput} placeholder='Division'
            value={this.state.division}
@@ -98,10 +94,6 @@ export default class Login extends Component<{}> {
             onChangeText={ (division) => this.setState({division}) }
              underlineColorios='transparent'
             />
-
-
-    
-
 
          </View>
             <TouchableOpacity
@@ -111,12 +103,9 @@ export default class Login extends Component<{}> {
             </TouchableOpacity>
 
 
-
-
-
           </View>
 
-</ImageBackground>
+     </ImageBackground>
 
        </KeyboardAvoidingView>
 
@@ -128,12 +117,13 @@ export default class Login extends Component<{}> {
 
 
 
-
+//login function when click on the button
 
   login = () => {
 
-
+      //my ip address
       fetch('http://192.168.1.15:3000/users', {
+        //use POST method
          method: 'POST',
          headers: {
              'Accept': 'application/json',
@@ -150,34 +140,30 @@ export default class Login extends Component<{}> {
       .then((response) => response.json())
       .then ((res) => {
 
-// if my response is true 
+       // if my response is true 
 
            if(res.success === true){
 
-           // var username = res.message;
-           // var division = res.message;
-
-
-
-
-       //    AsyncStorage.setItem('username', res.user);
-
-        // AsyncStorage.setItem('division', res.user);
-
-
-
-
-
-
-            AsyncStorage.setItem('user', res.user);
+           AsyncStorage.setItem('usernsame', res.user);
+           AsyncStorage.setItem('division', res.user);
 
             this.props.navigation.navigate('Profile');
          }
+
+         //if input fields don't match with database values
 
          else {
             alert(res.message);
            // alert(this.state.language);
          }
+
+         //input fields control
+
+         if((this.state.username==null)||(this.state.password==null)||(this.state.division==null))
+         {
+          alert('Empty Fieals');
+         }
+
 
          
 
@@ -207,7 +193,7 @@ const styles = StyleSheet.create({
    header: {
      fontSize: 40,
      marginBottom: 28,
-     fontStyle: 'italic',
+     //fontStyle: 'italic',
      color: '#fff',
      textShadowColor: '#252525',
      textShadowOffset: {width: 2, height: 2},

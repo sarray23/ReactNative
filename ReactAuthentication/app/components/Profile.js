@@ -14,41 +14,39 @@ import {
   ImageBackground,
   AsyncStorage
 } from 'react-native';
-// this import is responsible for the navigation between various screens of muy app
-import { StackNavigator } from 'react-navigation';
 import Header_Home from './Header_Home';
-import Login from './Login';
 
 
 
 export default class Profile extends Component<{}> {
 
-
     state = {
-     username: [],
-
-
+    division: [],
+    username: [],
 
   }
   
   componentDidMount() {
     this._loadInitialState().done();
   }
+  //get username and division from login screen to display them in home page
 
   _loadInitialState = async () => {
-
+ 
      var value = await AsyncStorage.getItem('username');
+     var value2 = await AsyncStorage.getItem('division');
+     if ((value!== null)&&(value2!==null))
+     {
+        this.setState({username: value});
 
-
-     if (value !== null){  
-       this.setState({username: value});
-
+        this.setState({division: value2});
 
 
      }
+
   }
 
-  //get my username from login screen and display it 
+  //display the username and the division items in the home page 
 
   render() {
     return (
@@ -57,7 +55,7 @@ export default class Profile extends Component<{}> {
           <View style={styles.container}>
           <Header_Home/>
           <View style={styles.textContent}>
-             <Text>Welcome {this.state.username} to your Home page</Text>
+             <Text>Welcome {this.state.username} From {this.state.division} To Your Home Page</Text>
            </View>
 
           </View>
@@ -70,21 +68,20 @@ export default class Profile extends Component<{}> {
 
 
 
-
-
 }
-//My StyleSheet
 
-const styles = StyleSheet.create({
+      //My StyleSheet
+
+      const styles = StyleSheet.create({
   
- container: {
-    flex: 1,
+      container: {
+      flex: 1,
    
- },
-  wrapper: {
-     flex: 1,
-  },
-  backgroundImage: {
+        },
+        wrapper: {
+        flex: 1,
+        },
+      backgroundImage: {
       width: '100%',
 
       height: '100%',
@@ -92,18 +89,18 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
 
- textContent: {
+     textContent: {
 
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: 40,
-    paddingRight: 40,
+     flex: 1,
+     alignItems: 'center',
+     justifyContent: 'center',
+     paddingLeft: 40,
+     paddingRight: 40,
 
- }
+     }
  
     
-});
+  });
 
 
 
