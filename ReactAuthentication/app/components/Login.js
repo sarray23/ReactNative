@@ -36,7 +36,7 @@ export default class Login extends Component<{}> {
      }
   }
 
-
+/*
 
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
 
@@ -52,7 +52,7 @@ export default class Login extends Component<{}> {
        this.props.navigation.navigate('Profile');
      }
   }
-
+*/
   render() {
     return (
 
@@ -140,9 +140,17 @@ export default class Login extends Component<{}> {
       .then((response) => response.json())
       .then ((res) => {
 
-       // if my response is true 
+       
+         //input fields control
 
-           if(res.success === true){
+         if((this.state.username===null)||(this.state.password===null)||(this.state.division===null))
+         {
+             alert('Empty Fieals');
+         }
+
+// if my response is true 
+
+           else if(res.success === true){
 
            AsyncStorage.setItem('usernsame', res.user);
            AsyncStorage.setItem('division', res.user);
@@ -152,20 +160,13 @@ export default class Login extends Component<{}> {
 
          //if input fields don't match with database values
 
+         
          else {
             alert(res.message);
            // alert(this.state.language);
          }
 
-         //input fields control
 
-         if((this.state.username==null)||(this.state.password==null)||(this.state.division==null))
-         {
-          alert('Empty Fieals');
-         }
-
-
-         
 
       })
 

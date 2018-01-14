@@ -29,6 +29,7 @@ const Application = StackNavigator({
         }
   });
 
+//NetInfo 
  
 export default class App extends Component<{}> {
 
