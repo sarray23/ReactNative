@@ -20,7 +20,7 @@ import Profile from './app/components/Profile';
 
 
 const Application = StackNavigator({
-
+//navigation
   Home: { screen: Login },
   Profile: { screen: Profile }
   }, {  
