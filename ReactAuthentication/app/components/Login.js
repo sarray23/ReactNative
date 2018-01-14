@@ -36,6 +36,7 @@ export default class Login extends Component<{}> {
      }
   }
 
+/*
 
 
 //This method will check either my user is already connected or not, in case not, the user would be redirected directly to his home page
@@ -52,7 +53,7 @@ export default class Login extends Component<{}> {
        this.props.navigation.navigate('Profile');
      }
   }
-
+*/
   render() {
     return (
 
@@ -143,12 +144,12 @@ export default class Login extends Component<{}> {
        
          //input fields control
 
-         if((this.state.username===null)||(this.state.password===null)||(this.state.division===null))
+         if((this.state.username== '')||(this.state.password == '')||(this.state.division == ''))
          {
-             alert('Empty Fieals');
+             alert('Empty Fields');
          }
 
-// if my response is true 
+         // if my response is true 
 
            else if(res.success === true){
 
