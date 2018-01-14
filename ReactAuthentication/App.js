@@ -28,27 +28,12 @@ const Application = StackNavigator({
         header: false,
         }
   });
-
-//NetInfo 
+//NetInfo
  
 export default class App extends Component<{}> {
 
 
-  componentDidMount() {
-    NetInfo.isConnected.fetch().then(isConnected => {
-  console.log('First, is ' + (isConnected ? 'online' : 'offline'));
-});
-}
-
-componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange);
-}
-
-handleConnectionChange = (isConnected) => {
-        this.setState({ status: isConnected });
-        console.log(`is connected: ${this.state.status}`);
-}
-
+  
   render() {
     return (
 

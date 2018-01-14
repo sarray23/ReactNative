@@ -16,7 +16,8 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   AsyncStorage,
-  Item
+  Item,
+  NetInfo
 } from 'react-native';
 
 import ValidationComponent from 'react-native-form-validator';
@@ -43,7 +44,35 @@ export default class Login extends Component<{}> {
 
   componentDidMount() {
     this._loadInitialState().done();
+
+    //Check my network connection
+
+      NetInfo.isConnected.addEventListener(
+      'change',
+      this._handleConnectivityChange
+  );
+  NetInfo.isConnected.fetch().done(
+      (isConnected) => { this.setState({isConnected}); }
+  );
+
+
   }
+
+
+
+componentWillUnmount() {
+  NetInfo.isConnected.removeEventListener(
+      'change',
+      this._handleConnectivityChange
+  );
+}
+
+_handleConnectivityChange = (isConnected) => {
+  this.setState({
+    isConnected,
+  });
+};
+
 
 //Redirection to profile page directly if user connected
   _loadInitialState = async () => {
@@ -63,6 +92,8 @@ export default class Login extends Component<{}> {
         <ImageBackground source={require('../img/bckground.jpg')} style={styles.backgroundImage}>
 
         <View style={styles.container}>
+
+
 
 
           <Text style={styles.header}>-LOGIN-</Text>
@@ -102,6 +133,10 @@ export default class Login extends Component<{}> {
              onPress={this.login}>
              <Text>Login</Text>
             </TouchableOpacity>
+
+
+            <Text
+             style={styles.info}>Your staus is {this.state.isConnected ? 'Online' : 'Offline'}</Text>
 
 
           </View>
@@ -251,6 +286,17 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor:'#fff',
     },
+
+
+    info: {
+
+      color: '#fff',
+     textShadowColor: '#252525',
+     textShadowOffset: {width: 2, height: 2},
+     textShadowRadius: 15,
+     fontWeight: 'bold',
+    }
+    
 
   
   
